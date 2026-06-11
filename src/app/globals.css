@@ -1,0 +1,502 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@300;400;500&family=Noto+Serif+Malayalam:wght@300;400;600&display=swap');
+
+@import "tailwindcss";
+
+
+:root {
+  --cream: #F5F0E8;
+  --warm-white: #FAF7F2;
+  --ink: #1C1410;
+  --ink-light: #3D2E24;
+  --sepia: #8B6914;
+  --sepia-light: #C4A35A;
+  --sepia-faint: #E8D5A3;
+  --paper: #EDE3D0;
+  --paper-dark: #D4C4A0;
+  --teal: #0F7C72;
+  --red-dark: #871919;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--warm-white);
+  color: var(--ink);
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+.font-playfair {
+  font-family: 'Playfair Display', serif;
+}
+
+.font-malayalam {
+  font-family: 'Noto Serif Malayalam', serif;
+}
+
+/* Paper texture overlay */
+.paper-texture {
+  position: relative;
+}
+
+.paper-texture::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  border-radius: inherit;
+}
+
+/* Ink underline effect */
+.ink-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.ink-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--sepia);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.ink-underline:hover::after {
+  transform: scaleX(1);
+}
+
+/* Fade in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.fade-in-up-delay-1 { animation-delay: 0.15s; opacity: 0; }
+.fade-in-up-delay-2 { animation-delay: 0.30s; opacity: 0; }
+.fade-in-up-delay-3 { animation-delay: 0.45s; opacity: 0; }
+.fade-in-up-delay-4 { animation-delay: 0.60s; opacity: 0; }
+
+/* Poem card */
+.poem-card {
+  background: var(--cream);
+  border: 1px solid var(--paper-dark);
+  border-radius: 2px;
+  position: relative;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.poem-card:hover {
+  box-shadow: 4px 4px 20px rgba(139, 105, 20, 0.12);
+  transform: translateY(-2px);
+}
+
+/* Mood pill */
+.mood-pill {
+  cursor: pointer;
+  border: 1px solid var(--paper-dark);
+  border-radius: 999px;
+  padding: 6px 16px;
+  font-size: 13px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  color: var(--ink-light);
+  background: transparent;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.mood-pill:hover {
+  border-color: var(--sepia);
+  color: var(--sepia);
+}
+
+.mood-pill.selected {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--cream);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--warm-white);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--paper-dark);
+  border-radius: 3px;
+}
+
+/* Glassmorphism Styles */
+.glass-card {
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(24px) saturate(120%);
+  -webkit-backdrop-filter: blur(24px) saturate(120%);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.12), inset 0 1px 1px 0 rgba(255, 255, 255, 0.25);
+  padding: 20px 16px 16px 16px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.glass-input {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 9999px;
+  padding: 6px 12px;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 300;
+  outline: none;
+  width: 100%;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-input::placeholder {
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 300;
+}
+
+.glass-input:focus {
+  border-color: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+}
+
+.glass-button {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 9999px;
+  padding: 6px;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 400;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  letter-spacing: 0.02em;
+  transition: all 0.2s ease;
+}
+
+.glass-button:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.glass-button:active {
+  background: rgba(255, 255, 255, 0.26);
+}
+
+.glass-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.submit-button {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+}
+
+.submit-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+.submit-button:active {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.continue-button {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 9999px;
+  padding: 10px 32px;
+  color: #ffffff;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+}
+
+.continue-button:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.55);
+  transform: translateY(-1px);
+}
+
+.continue-button:active {
+  transform: translateY(0);
+}
+
+/* Responsive Layouts */
+@media (max-width: 768px) {
+  .main-logo-container {
+    bottom: auto !important;
+    top: 6% !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 200px !important;
+    height: 80px !important;
+  }
+  .auth-wrapper {
+    padding: 0 !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+  .continue-btn-container {
+    bottom: 15% !important;
+    right: 50% !important;
+    transform: translateX(50%) !important;
+  }
+}
+
+/* ── VIEW TRANSITIONS ── */
+::view-transition-old(root) {
+  animation: 250ms cubic-bezier(0.4, 0, 0.2, 1) both fade-out;
+}
+::view-transition-new(root) {
+  animation: 350ms cubic-bezier(0.4, 0, 0.2, 1) both fade-in;
+}
+
+@keyframes fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Smooth background transition */
+::view-transition-group(bg) {
+  animation-duration: 600ms;
+}
+::view-transition-old(bg) {
+  animation: 600ms ease-out both fade-out;
+}
+::view-transition-new(bg) {
+  animation: 600ms ease-in both fade-in;
+}
+
+/* Dynamic Logo Morph with premium easing */
+::view-transition-group(logo) {
+  animation-duration: 750ms;
+  animation-timing-function: cubic-bezier(0.34, 1.45, 0.64, 1); /* slight premium bounce */
+}
+
+/* ── DIGITAL NOTEBOOK AESTHETIC ── */
+.journal-canvas {
+  background: var(--cream);
+  color: var(--ink);
+  border: 1px solid var(--paper-dark);
+  box-shadow: 0 16px 48px rgba(28, 20, 16, 0.08), 0 2px 8px rgba(28, 20, 16, 0.04);
+  border-radius: 12px;
+  position: relative;
+  transition: all 0.4s ease;
+}
+
+/* Invitation Invitation styles */
+.invitation-link {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.invitation-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.3);
+  transform: scaleX(0.7);
+  transform-origin: left;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.invitation-link:hover {
+  color: rgba(255, 255, 255, 1);
+}
+
+.invitation-link:hover::after {
+  transform: scaleX(1);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+/* Notebook input fields (typewriter feel) */
+.notebook-textarea {
+  background: transparent;
+  border: none;
+  border-bottom: 1px dashed var(--paper-dark);
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 19px;
+  line-height: 2;
+  color: var(--ink);
+  resize: none;
+  outline: none;
+  width: 100%;
+  transition: border-color 0.3s ease;
+}
+
+.notebook-textarea:focus {
+  border-bottom-color: var(--sepia);
+}
+
+.notebook-input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px dashed var(--paper-dark);
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.notebook-input:focus {
+  border-bottom-color: var(--sepia);
+}
+
+/* Selector buttons instead of standard select dropdowns */
+.notebook-pill {
+  background: transparent;
+  border: 1px solid var(--paper-dark);
+  border-radius: 4px;
+  padding: 8px 18px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: var(--ink-light);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.notebook-pill:hover {
+  border-color: var(--sepia);
+  background: rgba(139, 105, 20, 0.04);
+}
+
+.notebook-pill.selected {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--cream);
+}
+
+/* Fading text animations for placeholder prompts */
+@keyframes placeholderFade {
+  0%, 100% { opacity: 0; transform: translateY(5px); }
+  10%, 90% { opacity: 0.8; transform: translateY(0); }
+}
+
+.prompt-fade {
+  animation: placeholderFade 6s ease-in-out infinite;
+}
+
+/* Collapsible notebook details transition */
+.notebook-collapse {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.notebook-collapse.open {
+  max-height: 500px;
+}
+
+/* Glass containers matching wireframe screenshot */
+.glass-container-light {
+  background: rgba(220, 220, 220, 0.65);
+  backdrop-filter: blur(20px) saturate(120%);
+  -webkit-backdrop-filter: blur(20px) saturate(120%);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+}
+
+.glass-pill-button {
+  background: rgba(220, 220, 220, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 9999px;
+  padding: 14px 44px;
+  color: #1c1410;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.glass-pill-button:hover {
+  background: rgba(240, 240, 240, 0.85);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+/* Active tactile click press effect */
+.click-active {
+  transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.click-active:active {
+  transform: scale(0.96) !important;
+}
