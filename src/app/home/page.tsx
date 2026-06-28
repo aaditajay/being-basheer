@@ -30,9 +30,9 @@ export default function HomePage() {
   const chatEndRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    setIsEntering(false)
     supabase.auth.getUser().then(({ data }) => {
       setUser(data.user)
-      setIsEntering(false)
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -232,7 +232,7 @@ export default function HomePage() {
             {/* Quote */}
             <div style={{ maxWidth: 620 }}>
               <p style={{
-                fontFamily: "'Noto Serif Malayalam', serif",
+                fontFamily: 'var(--font-malayalam), serif',
                 fontSize: 22,
                 color: 'white',
                 marginBottom: 12,
