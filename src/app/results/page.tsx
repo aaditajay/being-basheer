@@ -109,12 +109,11 @@ export default function ResultsPage() {
 
       {/* Back */}
       <button onClick={() => router.push('/editor')}
-        className="click-active"
+        className="click-active liquid-glass-button-transparent"
         style={{
           position: 'absolute', top: 28, right: 32, zIndex: 10,
-          background: 'rgba(255,255,255,0.15)', backdropFilter: 'blur(10px)',
-          border: '1px solid rgba(255,255,255,0.25)', borderRadius: 999,
-          padding: '8px 20px', color: 'white', fontSize: 13, cursor: 'pointer',
+          borderRadius: 999,
+          padding: '8px 20px', fontSize: 13, cursor: 'pointer',
         }}>
         ← write again
       </button>

@@ -82,12 +82,10 @@ export default function AuthModal({ onSuccess, onClose }: AuthModalProps) {
       {/* Card */}
       <div
         onClick={e => e.stopPropagation()}
+        className="liquid-glass-dark"
         style={{
-          background: 'rgba(20,20,20,0.85)',
-          backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)',
-          border: '1px solid rgba(255,255,255,0.12)', borderRadius: 20,
+          borderRadius: 20,
           padding: '40px 36px', width: 360,
-          boxShadow: '0 8px 48px rgba(0,0,0,0.5)',
           display: 'flex', flexDirection: 'column', gap: 14,
           fontFamily: 'Inter, sans-serif',
         }}
@@ -151,12 +149,12 @@ export default function AuthModal({ onSuccess, onClose }: AuthModalProps) {
           <button
             onClick={handleVerifyOtp}
             disabled={loading || otp.length < 6}
+            className={otp.length >= 6 ? "click-active liquid-glass-button-light" : "liquid-glass-button-dark"}
             style={{
-              background: otp.length >= 6 ? 'rgba(255,255,255,0.85)' : 'rgba(255,255,255,0.15)',
-              border: '1px solid rgba(255,255,255,0.2)', borderRadius: 999, padding: '13px',
-              color: otp.length >= 6 ? '#1a1a1a' : 'white', fontSize: 14,
+              borderRadius: 999, padding: '13px',
+              fontSize: 14,
               cursor: otp.length >= 6 ? 'pointer' : 'not-allowed',
-              letterSpacing: '0.04em', transition: 'all 0.2s', opacity: loading ? 0.6 : 1,
+              letterSpacing: '0.04em', opacity: loading ? 0.6 : 1,
             }}
           >
             {loading ? 'verifying...' : 'continue →'}
@@ -180,15 +178,25 @@ const linkStyle: React.CSSProperties = { color: '#7dd3c8', cursor: 'pointer', te
 
 function GlassInput({ placeholder, value, onChange, type }: { placeholder: string; value: string; onChange: (v: string) => void; type: string }) {
   return (
-    <input type={type} placeholder={placeholder} value={value} onChange={e => onChange(e.target.value)}
-      style={{ background: 'rgba(180,180,180,0.18)', border: '1px solid rgba(255,255,255,0.15)', borderRadius: 999, padding: '12px 20px', color: 'white', fontSize: 14, outline: 'none', width: '100%' }} />
+    <input 
+      type={type} 
+      placeholder={placeholder} 
+      value={value} 
+      onChange={e => onChange(e.target.value)}
+      className="liquid-glass-input"
+      style={{ borderRadius: 999, padding: '12px 20px', fontSize: 14, outline: 'none', width: '100%' }} 
+    />
   )
 }
 
 function GlassButton({ children, onClick, loading }: { children: React.ReactNode; onClick: (e: React.FormEvent) => void; loading?: boolean }) {
   return (
-    <button onClick={onClick} disabled={loading}
-      style={{ background: 'rgba(255,255,255,0.15)', border: '1px solid rgba(255,255,255,0.2)', borderRadius: 999, padding: '13px', color: 'white', fontSize: 14, cursor: 'pointer', letterSpacing: '0.04em', opacity: loading ? 0.6 : 1 }}>
+    <button 
+      onClick={onClick} 
+      disabled={loading}
+      className="click-active liquid-glass-button-dark"
+      style={{ borderRadius: 999, padding: '13px', fontSize: 14, cursor: 'pointer', letterSpacing: '0.04em', opacity: loading ? 0.6 : 1 }}
+    >
       {children}
     </button>
   )
@@ -206,8 +214,11 @@ function Divider() {
 
 function GoogleButton({ onClick }: { onClick: () => void }) {
   return (
-    <button onClick={onClick}
-      style={{ background: 'rgba(255,255,255,0.12)', border: '1px solid rgba(255,255,255,0.18)', borderRadius: 999, padding: '12px', color: 'white', fontSize: 14, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10 }}>
+    <button 
+      onClick={onClick}
+      className="click-active liquid-glass-button-dark"
+      style={{ borderRadius: 999, padding: '12px', fontSize: 14, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10 }}
+    >
       <svg width="18" height="18" viewBox="0 0 24 24">
         <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
         <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>

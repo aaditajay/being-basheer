@@ -150,25 +150,19 @@ export default function HomePage() {
                 setShowAuth(true)
               }
             }}
+            className="liquid-glass-button-light"
             style={{
               width: 44,
               height: 44,
               borderRadius: '50%',
               overflow: 'hidden',
-              border: '2px solid rgba(255,255,255,0.7)',
               cursor: 'pointer',
-              background: 'rgba(255,255,255,0.75)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              color: '#1c1410',
               fontSize: 16,
               fontWeight: 500,
-              boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-              transition: 'all 0.2s ease',
             }}
-            onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.05)'}
-            onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
             title={user ? "Sign out" : "Sign in"}
           >
             {user ? (
@@ -199,55 +193,37 @@ export default function HomePage() {
             <div style={{ display: 'flex', gap: 20, zIndex: 10, marginBottom: 56 }}>
               <button 
                 onClick={() => router.push('/editor')} 
-                className="click-active"
+                className="click-active liquid-glass-button-transparent"
                 style={{
-                  background: 'rgba(220, 220, 220, 0.7)',
-                  backdropFilter: 'blur(12px)',
-                  WebkitBackdropFilter: 'blur(12px)',
-                  border: '1px solid rgba(255, 255, 255, 0.35)',
                   borderRadius: '9999px',
                   padding: '14px 44px',
-                  color: '#1c1410',
-                  fontFamily: 'Inter, sans-serif',
+                  fontFamily: 'var(--font-griffiths), Georgia, serif',
                   fontSize: '14px',
                   fontWeight: 400,
                   letterSpacing: '0.04em',
                   cursor: 'pointer',
-                  boxShadow: '0 4px 16px rgba(0,0,0,0.06)',
-                  transition: 'all 0.25s ease',
                   display: 'inline-flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                 }}
-                onMouseEnter={e => e.currentTarget.style.background = 'rgba(240, 240, 240, 0.85)'}
-                onMouseLeave={e => e.currentTarget.style.background = 'rgba(220, 220, 220, 0.7)'}
               >
                 continue a thought
               </button>
               <button 
                 onClick={() => router.push('/wall')} 
-                className="click-active"
+                className="click-active liquid-glass-button-transparent"
                 style={{
-                  background: 'rgba(220, 220, 220, 0.7)',
-                  backdropFilter: 'blur(12px)',
-                  WebkitBackdropFilter: 'blur(12px)',
-                  border: '1px solid rgba(255, 255, 255, 0.35)',
                   borderRadius: '9999px',
                   padding: '14px 44px',
-                  color: '#1c1410',
-                  fontFamily: 'Inter, sans-serif',
+                  fontFamily: 'var(--font-griffiths), Georgia, serif',
                   fontSize: '14px',
                   fontWeight: 400,
                   letterSpacing: '0.04em',
                   cursor: 'pointer',
-                  boxShadow: '0 4px 16px rgba(0,0,0,0.06)',
-                  transition: 'all 0.25s ease',
                   display: 'inline-flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                 }}
-                onMouseEnter={e => e.currentTarget.style.background = 'rgba(240, 240, 240, 0.85)'}
-                onMouseLeave={e => e.currentTarget.style.background = 'rgba(220, 220, 220, 0.7)'}
               >
                 read the wall
               </button>

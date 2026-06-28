@@ -23,12 +23,12 @@ const PROGRESS_MESSAGES = [
 ]
 
 const glassStyle = {
-  background: 'rgba(220, 220, 220, 0.65)',
-  backdropFilter: 'blur(20px) saturate(120%)',
-  WebkitBackdropFilter: 'blur(20px) saturate(120%)',
-  border: '1px solid rgba(255, 255, 255, 0.45)',
+  background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0.3) 100%)',
+  backdropFilter: 'blur(20px) saturate(150%)',
+  WebkitBackdropFilter: 'blur(20px) saturate(150%)',
+  border: '1px solid rgba(255, 255, 255, 0.5)',
   borderRadius: '24px',
-  boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.05)',
+  boxShadow: '0 12px 32px rgba(0, 0, 0, 0.06), 0 2px 4px rgba(0, 0, 0, 0.02), inset 0 2px 2px rgba(255, 255, 255, 0.6), inset 0 8px 16px rgba(255, 255, 255, 0.25), inset 0 -8px 16px rgba(0, 0, 0, 0.03), inset 0 1px 8px rgba(255, 255, 255, 0.4)',
 }
 
 export default function EditorPage() {
@@ -201,7 +201,7 @@ export default function EditorPage() {
           {/* Large Card: Start with a thought */}
           <div style={{ ...glassStyle, padding: '24px 28px', flex: 1, display: 'flex', flexDirection: 'column' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
-              <span style={{ fontSize: 13, fontWeight: 500, color: '#3d2e24', letterSpacing: '0.04em' }}>
+              <span style={{ fontSize: 11, fontWeight: 600, color: '#4d3e38', letterSpacing: '0.08em', textTransform: 'uppercase', display: 'block' }}>
                 write your thought
               </span>
               {/* Mic Icon */}
@@ -254,7 +254,7 @@ export default function EditorPage() {
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
             {/* Card Left: Tell me a little more */}
             <div style={{ ...glassStyle, padding: '20px 24px', height: 130, display: 'flex', flexDirection: 'column' }}>
-              <span style={{ fontSize: 12, fontWeight: 500, color: '#3d2e24', letterSpacing: '0.04em', marginBottom: 8 }}>
+              <span style={{ fontSize: 11, fontWeight: 600, color: '#4d3e38', letterSpacing: '0.08em', textTransform: 'uppercase', display: 'block', marginBottom: 8 }}>
                 tell me a little more (optional)
               </span>
               <textarea
@@ -278,7 +278,7 @@ export default function EditorPage() {
 
             {/* Card Right: Who is this for? */}
             <div style={{ ...glassStyle, padding: '20px 24px', height: 130, display: 'flex', flexDirection: 'column' }}>
-              <span style={{ fontSize: 12, fontWeight: 500, color: '#3d2e24', letterSpacing: '0.04em', marginBottom: 8 }}>
+              <span style={{ fontSize: 11, fontWeight: 600, color: '#4d3e38', letterSpacing: '0.08em', textTransform: 'uppercase', display: 'block', marginBottom: 8 }}>
                 who is this for? (optional)
               </span>
               <input
@@ -307,15 +307,11 @@ export default function EditorPage() {
             <button
               onClick={handleGenerate}
               disabled={loading}
-              className="click-active glass-pill-button"
+              className="click-active liquid-glass-button-dark"
               style={{
-                background: '#1c1410',
-                color: 'white',
-                border: 'none',
                 padding: '14px 48px',
                 fontWeight: 400,
                 fontSize: 15,
-                boxShadow: '0 4px 20px rgba(0,0,0,0.15)',
               }}
             >
               Complete the Feeling
@@ -338,16 +334,12 @@ export default function EditorPage() {
                   key={m}
                   type="button"
                   onClick={() => setMood(m)}
-                  className="click-active"
+                  className={mood === m ? "click-active liquid-glass-button-dark" : "click-active liquid-glass-button-light"}
                   style={{
-                    background: mood === m ? '#1c1410' : 'rgba(255,255,255,0.4)',
-                    border: '1px solid rgba(0,0,0,0.1)',
                     borderRadius: 999,
                     padding: '5px 12px',
                     fontSize: 11,
-                    color: mood === m ? 'white' : '#1c1410',
                     cursor: 'pointer',
-                    transition: 'all 0.15s ease',
                   }}
                 >
                   {m}
@@ -367,16 +359,12 @@ export default function EditorPage() {
                   key={s}
                   type="button"
                   onClick={() => setStyle(s)}
-                  className="click-active"
+                  className={style === s ? "click-active liquid-glass-button-dark" : "click-active liquid-glass-button-light"}
                   style={{
-                    background: style === s ? '#1c1410' : 'rgba(255,255,255,0.4)',
-                    border: '1px solid rgba(0,0,0,0.1)',
                     borderRadius: 999,
                     padding: '5px 12px',
                     fontSize: 11,
-                    color: style === s ? 'white' : '#1c1410',
                     cursor: 'pointer',
-                    transition: 'all 0.15s ease',
                   }}
                 >
                   {s}
@@ -396,16 +384,12 @@ export default function EditorPage() {
                   key={l}
                   type="button"
                   onClick={() => setLength(l)}
-                  className="click-active"
+                  className={length === l ? "click-active liquid-glass-button-dark" : "click-active liquid-glass-button-light"}
                   style={{
-                    background: length === l ? '#1c1410' : 'rgba(255,255,255,0.4)',
-                    border: '1px solid rgba(0,0,0,0.1)',
                     borderRadius: 999,
                     padding: '5px 12px',
                     fontSize: 11,
-                    color: length === l ? 'white' : '#1c1410',
                     cursor: 'pointer',
-                    transition: 'all 0.15s ease',
                   }}
                 >
                   {l}
@@ -425,16 +409,12 @@ export default function EditorPage() {
                   key={lang}
                   type="button"
                   onClick={() => setLanguage(lang)}
-                  className="click-active"
+                  className={language === lang ? "click-active liquid-glass-button-dark" : "click-active liquid-glass-button-light"}
                   style={{
-                    background: language === lang ? '#1c1410' : 'rgba(255,255,255,0.4)',
-                    border: '1px solid rgba(0,0,0,0.1)',
                     borderRadius: 999,
                     padding: '5px 12px',
                     fontSize: 11,
-                    color: language === lang ? 'white' : '#1c1410',
                     cursor: 'pointer',
-                    transition: 'all 0.15s ease',
                   }}
                 >
                   {lang}

@@ -64,12 +64,11 @@ export default function WallPage() {
       {/* Write button */}
       <button
         onClick={() => router.push('/editor')}
-        className="click-active"
+        className="click-active liquid-glass-button-transparent"
         style={{
           position: 'absolute', top: 28, right: 32, zIndex: 10,
-          background: 'rgba(255,255,255,0.15)', backdropFilter: 'blur(10px)',
-          border: '1px solid rgba(255,255,255,0.25)', borderRadius: 999,
-          padding: '8px 24px', color: 'white', fontSize: 13,
+          borderRadius: 999,
+          padding: '8px 24px', fontSize: 13,
           cursor: 'pointer', letterSpacing: '0.04em',
         }}
       >
@@ -129,17 +128,14 @@ export default function WallPage() {
             return (
               <div
                 key={poem.id}
+                className="liquid-glass-dark"
                 style={{
-                  background: expanded?.id === poem.id
-                    ? 'rgba(255,255,255,0.10)'
-                    : 'rgba(255,255,255,0.05)',
-                  backdropFilter: 'blur(16px)',
-                  WebkitBackdropFilter: 'blur(16px)',
-                  border: '1px solid rgba(255,255,255,0.10)',
                   borderRadius: 16,
                   overflow: 'hidden',
-                  transition: 'all 0.3s ease',
                   marginBottom: 12,
+                  background: expanded?.id === poem.id
+                    ? 'linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.08) 100%)'
+                    : undefined,
                 }}
               >
                 {/* Row header — always visible */}
@@ -200,15 +196,14 @@ export default function WallPage() {
                           <button
                             key={i}
                             onClick={() => setExpanded({ id: poem.id, index: i })}
-                            className="click-active"
+                            className={activeIndex === i ? "click-active liquid-glass-button-dark" : "click-active"}
                             style={{
-                              background: activeIndex === i ? 'rgba(255,255,255,0.2)' : 'transparent',
-                              border: '1px solid rgba(255,255,255,0.15)',
+                              background: activeIndex === i ? undefined : 'transparent',
+                              border: activeIndex === i ? undefined : '1px solid rgba(255,255,255,0.15)',
                               borderRadius: 999, padding: '4px 14px',
                               color: activeIndex === i ? 'white' : 'rgba(255,255,255,0.4)',
                               fontSize: 11, cursor: 'pointer',
                               letterSpacing: '0.06em',
-                              transition: 'all 0.15s',
                             }}
                           >
                             version {i + 1}
@@ -233,13 +228,11 @@ export default function WallPage() {
                     {/* Copy */}
                     <button
                       onClick={() => navigator.clipboard.writeText(activePoem)}
-                      className="click-active"
+                      className="click-active liquid-glass-button-transparent"
                       style={{
                         marginTop: 20,
-                        background: 'transparent',
-                        border: '1px solid rgba(255,255,255,0.15)',
                         borderRadius: 999, padding: '6px 18px',
-                        color: 'rgba(255,255,255,0.4)', fontSize: 11,
+                        fontSize: 11,
                         cursor: 'pointer', letterSpacing: '0.06em',
                       }}
                     >

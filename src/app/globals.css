@@ -500,3 +500,159 @@ body {
 .click-active:active {
   transform: scale(0.96) !important;
 }
+
+/* ── LIQUID GLASS STYLES ── */
+.liquid-glass-dark {
+  background: linear-gradient(135deg, rgba(20, 20, 20, 0.45) 0%, rgba(10, 10, 10, 0.25) 100%) !important;
+  backdrop-filter: blur(24px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(140%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  box-shadow: 
+    0 16px 40px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25),
+    inset 0 8px 16px rgba(255, 255, 255, 0.05),
+    inset 0 -8px 16px rgba(0, 0, 0, 0.2),
+    inset 0 1px 6px rgba(255, 255, 255, 0.15) !important;
+}
+
+.liquid-glass-light {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.25) 100%) !important;
+  backdrop-filter: blur(20px) saturate(150%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+  box-shadow: 
+    0 12px 32px rgba(0, 0, 0, 0.06),
+    0 2px 4px rgba(0, 0, 0, 0.02),
+    inset 0 2px 2px rgba(255, 255, 255, 0.6),
+    inset 0 8px 16px rgba(255, 255, 255, 0.25),
+    inset 0 -8px 16px rgba(0, 0, 0, 0.03),
+    inset 0 1px 8px rgba(255, 255, 255, 0.4) !important;
+}
+
+.liquid-glass-button-dark {
+  background: linear-gradient(135deg, rgba(20, 20, 20, 0.5) 0%, rgba(10, 10, 10, 0.3) 100%) !important;
+  backdrop-filter: blur(16px) saturate(130%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(130%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  color: rgba(255, 255, 255, 0.95) !important;
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    inset 0 8px 16px rgba(255, 255, 255, 0.06),
+    inset 0 -8px 16px rgba(0, 0, 0, 0.12) !important;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+}
+
+.liquid-glass-button-dark:hover {
+  background: linear-gradient(135deg, rgba(30, 30, 30, 0.6) 0%, rgba(20, 20, 20, 0.4) 100%) !important;
+  border-color: rgba(255, 255, 255, 0.28) !important;
+  box-shadow: 
+    0 12px 28px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 12px 24px rgba(255, 255, 255, 0.12),
+    inset 0 -12px 24px rgba(0, 0, 0, 0.15) !important;
+  transform: translateY(-2px) !important;
+}
+
+.liquid-glass-button-dark:active {
+  transform: translateY(0) scale(0.97) !important;
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    inset 0 6px 12px rgba(255, 255, 255, 0.05),
+    inset 0 -6px 12px rgba(0, 0, 0, 0.1) !important;
+}
+
+.liquid-glass-button-light {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.3) 100%) !important;
+  backdrop-filter: blur(16px) saturate(150%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(150%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.55) !important;
+  color: #1c1410 !important;
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.08),
+    inset 0 2px 2px rgba(255, 255, 255, 0.65),
+    inset 0 8px 16px rgba(255, 255, 255, 0.3),
+    inset 0 -8px 16px rgba(0, 0, 0, 0.04),
+    inset 0 1px 8px rgba(255, 255, 255, 0.45) !important;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+}
+
+.liquid-glass-button-light:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0.45) 100%) !important;
+  border-color: rgba(255, 255, 255, 0.7) !important;
+  box-shadow: 
+    0 12px 32px rgba(0, 0, 0, 0.12),
+    inset 0 2px 2px rgba(255, 255, 255, 0.75),
+    inset 0 12px 24px rgba(255, 255, 255, 0.4),
+    inset 0 -12px 24px rgba(0, 0, 0, 0.05),
+    inset 0 1px 12px rgba(255, 255, 255, 0.55) !important;
+  transform: translateY(-2px) !important;
+}
+
+.liquid-glass-button-light:active {
+  transform: translateY(0) scale(0.97) !important;
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.08),
+    inset 0 2px 2px rgba(255, 255, 255, 0.55),
+    inset 0 6px 12px rgba(255, 255, 255, 0.2),
+    inset 0 -6px 12px rgba(0, 0, 0, 0.03) !important;
+}
+
+.liquid-glass-input {
+  background: rgba(255, 255, 255, 0.06) !important;
+  backdrop-filter: blur(12px) saturate(120%) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(120%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: white !important;
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 4px 8px rgba(0, 0, 0, 0.15),
+    inset 0 -4px 8px rgba(255, 255, 255, 0.01) !important;
+  transition: all 0.2s ease !important;
+}
+
+.liquid-glass-input::placeholder {
+  color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.liquid-glass-input:focus {
+  border-color: rgba(255, 255, 255, 0.4) !important;
+  background: rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 
+    0 0 0 2px rgba(255, 255, 255, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    inset 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+.liquid-glass-button-transparent {
+  background: transparent !important;
+  backdrop-filter: blur(12px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(140%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: rgba(255, 255, 255, 0.95) !important;
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 8px 16px rgba(255, 255, 255, 0.02) !important;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+}
+
+.liquid-glass-button-transparent:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+  color: #ffffff !important;
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    inset 0 8px 16px rgba(255, 255, 255, 0.08) !important;
+  transform: translateY(-2px) !important;
+}
+
+.liquid-glass-button-transparent:active {
+  transform: translateY(0) scale(0.97) !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+}

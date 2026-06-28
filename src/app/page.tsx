@@ -50,19 +50,14 @@ export default function Home() {
         {/* Continue button */}
         <button
           onClick={handleContinue}
-          className="click-active"
+          className="click-active liquid-glass-button-transparent"
           style={{
             position: 'absolute', bottom: '23%', right: '13%',
-            background: 'rgba(0,0,0,0.35)',
-            backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)',
-            border: '1px solid rgba(255,255,255,0.2)', borderRadius: 999,
-            padding: '10px 44px', color: 'rgba(255,255,255,0.9)', fontSize: 13,
+            borderRadius: 999,
+            padding: '10px 44px', fontSize: 13,
+            fontFamily: 'var(--font-griffiths), Georgia, serif',
             letterSpacing: '0.08em', cursor: 'pointer',
-            boxShadow: '0 4px 20px rgba(0,0,0,0.3)',
-            transition: 'all 0.2s ease',
           }}
-          onMouseEnter={e => (e.currentTarget.style.background = 'rgba(0,0,0,0.5)')}
-          onMouseLeave={e => (e.currentTarget.style.background = 'rgba(0,0,0,0.35)')}
         >
           continue
         </button>
