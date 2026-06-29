@@ -291,34 +291,32 @@ body {
   }
 }
 
-/* ── VIEW TRANSITIONS (Apple Style Slide & Scale) ── */
+/* ── VIEW TRANSITIONS (Premium Fade/Blur) ── */
 ::view-transition-old(root) {
-  animation: 300ms cubic-bezier(0.16, 1, 0.3, 1) both scale-down-out;
+  animation: 350ms cubic-bezier(0.25, 1, 0.5, 1) both fade-blur-out;
 }
 ::view-transition-new(root) {
-  animation: 500ms cubic-bezier(0.16, 1, 0.3, 1) both slide-up-in;
+  animation: 450ms cubic-bezier(0.25, 1, 0.5, 1) both fade-blur-in;
 }
 
-@keyframes scale-down-out {
+@keyframes fade-blur-out {
   from {
-    transform: scale(1);
+    filter: blur(0px);
     opacity: 1;
-    filter: brightness(1);
   }
   to {
-    transform: scale(0.97);
+    filter: blur(12px);
     opacity: 0;
-    filter: brightness(0.85);
   }
 }
 
-@keyframes slide-up-in {
+@keyframes fade-blur-in {
   from {
-    transform: translateY(40px);
+    filter: blur(12px);
     opacity: 0;
   }
   to {
-    transform: translateY(0);
+    filter: blur(0px);
     opacity: 1;
   }
 }
