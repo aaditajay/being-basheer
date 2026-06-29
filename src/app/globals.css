@@ -296,7 +296,7 @@ body {
   animation: 350ms cubic-bezier(0.25, 1, 0.5, 1) both fade-blur-out;
 }
 ::view-transition-new(root) {
-  animation: 450ms cubic-bezier(0.25, 1, 0.5, 1) both fade-blur-in;
+  animation: 500ms cubic-bezier(0.25, 1, 0.5, 1) both fade-blur-in;
 }
 
 @keyframes fade-blur-out {
@@ -323,19 +323,19 @@ body {
 
 /* Smooth background transition */
 ::view-transition-group(bg) {
-  animation-duration: 600ms;
+  animation-duration: 500ms;
 }
 ::view-transition-old(bg) {
-  animation: 600ms ease-out both fade-out;
+  animation: 500ms ease-out both fade-out;
 }
 ::view-transition-new(bg) {
-  animation: 600ms ease-in both fade-in;
+  animation: 500ms ease-in both fade-in;
 }
 
 /* Dynamic Logo Morph with premium easing */
 ::view-transition-group(logo) {
-  animation-duration: 700ms;
-  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1); /* Apple premium ease */
+  animation-duration: 500ms;
+  animation-timing-function: cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 /* ── DIGITAL NOTEBOOK AESTHETIC ── */
