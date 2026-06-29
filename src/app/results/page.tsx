@@ -123,13 +123,13 @@ export default function ResultsPage() {
 
         {/* Meta */}
         {meta && (
-          <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 12, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 32, fontFamily: 'Georgia, serif', fontStyle: 'italic' }}>
+          <p className="fade-in-up" style={{ color: 'rgba(255,255,255,0.6)', fontSize: 12, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 32, fontFamily: 'Georgia, serif', fontStyle: 'italic' }}>
             {meta.mood} · {meta.style}{meta.recipient ? ` · for ${meta.recipient}` : ''}{meta.language ? ` · ${meta.language}` : ''}
           </p>
         )}
 
         {/* Poem cards */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 24, marginBottom: 40 }}>
+        <div className="fade-in-up fade-in-up-delay-1" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 24, marginBottom: 40 }}>
           {poems.map((poem, i) => (
             <div 
               key={i} 

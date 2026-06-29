@@ -185,12 +185,12 @@ export default function HomePage() {
         {!showReflector ? (
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', width: '100%', padding: '0 24px' }}>
             {/* Logo */}
-            <div style={{ marginBottom: 40 }}>
+            <div className="fade-in-up" style={{ marginBottom: 40 }}>
               <Image src="/logo.png" alt="Being Basheer" width={220} height={88} style={{ objectFit: 'contain', viewTransitionName: 'logo' }} priority loading="eager" />
             </div>
 
             {/* Invitation links */}
-            <div style={{ display: 'flex', gap: 20, zIndex: 10, marginBottom: 56 }}>
+            <div className="fade-in-up fade-in-up-delay-1" style={{ display: 'flex', gap: 20, zIndex: 10, marginBottom: 56 }}>
               <button 
                 onClick={() => router.push('/editor')} 
                 className="click-active liquid-glass-button-transparent"
@@ -230,7 +230,7 @@ export default function HomePage() {
             </div>
 
             {/* Quote */}
-            <div style={{ maxWidth: 620 }}>
+            <div className="fade-in-up fade-in-up-delay-2" style={{ maxWidth: 620 }}>
               <p style={{
                 fontFamily: 'var(--font-malayalam), serif',
                 fontSize: 22,
@@ -253,7 +253,7 @@ export default function HomePage() {
             </div>
 
             {/* Companion Link */}
-            <div style={{ marginTop: 32 }}>
+            <div className="fade-in-up fade-in-up-delay-3" style={{ marginTop: 32 }}>
               <span onClick={startReflection} style={{ cursor: 'pointer', color: 'rgba(255,255,255,0.5)', fontSize: 13, fontStyle: 'italic', fontFamily: 'Georgia, serif', borderBottom: '1px dashed rgba(255,255,255,0.3)', paddingBottom: 2 }}>
                 reflect with a companion
               </span>

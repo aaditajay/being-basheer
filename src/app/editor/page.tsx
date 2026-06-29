@@ -196,7 +196,7 @@ export default function EditorPage() {
       }}>
         
         {/* LEFT COLUMN */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+        <div className="fade-in-up" style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
           
           {/* Large Card: Start with a thought */}
           <div style={{ ...glassStyle, padding: '24px 28px', flex: 1, display: 'flex', flexDirection: 'column' }}>
@@ -321,7 +321,7 @@ export default function EditorPage() {
         </div>
 
         {/* RIGHT COLUMN — Stack of Cards */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+        <div className="fade-in-up fade-in-up-delay-1" style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
           
           {/* Card 1: What feeling should remain? */}
           <div style={{ ...glassStyle, padding: '18px 22px' }}>

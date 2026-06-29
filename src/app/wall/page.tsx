@@ -79,7 +79,7 @@ export default function WallPage() {
       <div style={{ position: 'relative', zIndex: 10, padding: '100px 40px 80px', maxWidth: 900, margin: '0 auto' }}>
 
         {/* Header */}
-        <div style={{ marginBottom: 56, textAlign: 'center' }}>
+        <div className="fade-in-up" style={{ marginBottom: 56, textAlign: 'center' }}>
           <p style={{
             fontFamily: 'var(--font-griffiths), Georgia, serif',
             fontStyle: 'italic',
@@ -119,7 +119,7 @@ export default function WallPage() {
         )}
 
         {/* Poem entries */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+        <div className="fade-in-up fade-in-up-delay-1" style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
           {poems.map((poem) => {
             const versions = getPoems(poem)
             const activeIndex = expanded?.id === poem.id ? expanded.index : 0
