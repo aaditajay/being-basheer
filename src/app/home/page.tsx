@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useRef } from 'react'
 import Image from 'next/image'
-import { useTransitionRouter as useRouter } from 'next-view-transitions'
+import { useTransitionRouter as useRouter, Link } from 'next-view-transitions'
 import { createClient } from '@/lib/supabase'
 import type { User } from '@supabase/supabase-js'
 import AuthModal from '@/components/auth_modal'
@@ -34,6 +34,8 @@ export default function HomePage() {
     supabase.auth.getUser().then(({ data }) => {
       setUser(data.user)
     })
+    router.prefetch('/editor')
+    router.prefetch('/wall')
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -191,8 +193,8 @@ export default function HomePage() {
 
             {/* Invitation links */}
             <div className="fade-in-up fade-in-up-delay-1" style={{ display: 'flex', gap: 20, zIndex: 10, marginBottom: 56 }}>
-              <button 
-                onClick={() => router.push('/editor')} 
+              <Link 
+                href="/editor" 
                 className="click-active liquid-glass-button-transparent"
                 style={{
                   borderRadius: '9999px',
@@ -205,12 +207,13 @@ export default function HomePage() {
                   display: 'inline-flex',
                   alignItems: 'center',
                   justifyContent: 'center',
+                  textDecoration: 'none',
                 }}
               >
                 continue a thought
-              </button>
-              <button 
-                onClick={() => router.push('/wall')} 
+              </Link>
+              <Link 
+                href="/wall" 
                 className="click-active liquid-glass-button-transparent"
                 style={{
                   borderRadius: '9999px',
@@ -223,10 +226,11 @@ export default function HomePage() {
                   display: 'inline-flex',
                   alignItems: 'center',
                   justifyContent: 'center',
+                  textDecoration: 'none',
                 }}
               >
                 read the wall
-              </button>
+              </Link>
             </div>
 
             {/* Quote */}

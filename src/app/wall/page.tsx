@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
-import { useTransitionRouter as useRouter } from 'next-view-transitions'
+import { useTransitionRouter as useRouter, Link } from 'next-view-transitions'
 import { createClient } from '@/lib/supabase'
 
 type Poem = {
@@ -37,6 +37,8 @@ export default function WallPage() {
       setLoading(false)
     }
     fetchPoems()
+    router.prefetch('/home')
+    router.prefetch('/editor')
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -56,24 +58,26 @@ export default function WallPage() {
         style={{ objectFit: 'cover', objectPosition: 'center', zIndex: 0, filter: 'brightness(0.3)', viewTransitionName: 'bg' }} priority />
 
       {/* Logo */}
-      <div style={{ position: 'absolute', top: 24, left: 32, zIndex: 10, cursor: 'pointer' }}
-        onClick={() => router.push('/home')} className="click-active">
+      <Link href="/home" style={{ position: 'absolute', top: 24, left: 32, zIndex: 10, cursor: 'pointer', display: 'block' }}
+        className="click-active">
         <Image src="/logo.png" alt="Being Basheer" width={100} height={40} style={{ objectFit: 'contain', viewTransitionName: 'logo' }} priority loading="eager" />
-      </div>
+      </Link>
 
       {/* Write button */}
-      <button
-        onClick={() => router.push('/editor')}
+      <Link
+        href="/editor"
         className="click-active liquid-glass-button-transparent"
         style={{
           position: 'absolute', top: 28, right: 32, zIndex: 10,
           borderRadius: 999,
           padding: '8px 24px', fontSize: 13,
           cursor: 'pointer', letterSpacing: '0.04em',
+          textDecoration: 'none',
+          textAlign: 'center',
         }}
       >
         write →
-      </button>
+      </Link>
 
       {/* Content */}
       <div style={{ position: 'relative', zIndex: 10, padding: '100px 40px 80px', maxWidth: 900, margin: '0 auto' }}>

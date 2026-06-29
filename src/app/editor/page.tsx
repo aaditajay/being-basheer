@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
-import { useTransitionRouter as useRouter } from 'next-view-transitions'
+import { useTransitionRouter as useRouter, Link } from 'next-view-transitions'
 
 const MOODS = ['Hope', 'Longing', 'Nostalgia', 'Wonder', 'Comfort', 'Healing', 'Melancholy', 'Romance']
 const STYLES = ['Poem', 'Letter', 'Reflection', 'Diary Entry', 'Story Fragment', 'Free Verse']
@@ -60,7 +60,9 @@ export default function EditorPage() {
       setThought(prefilled)
       sessionStorage.removeItem('prefilledThought')
     }
-  }, [])
+    router.prefetch('/results')
+    router.prefetch('/home')
+  }, [router])
 
   // Rotate example placeholder prompts
   useEffect(() => {
@@ -170,7 +172,7 @@ export default function EditorPage() {
       )}
 
       {/* Logo (Top Left, matching screenshot) */}
-      <div style={{ position: 'absolute', top: 24, left: 32, zIndex: 10, cursor: 'pointer' }} onClick={() => router.push('/home')} className="click-active">
+      <Link href="/home" style={{ position: 'absolute', top: 24, left: 32, zIndex: 10, cursor: 'pointer', display: 'block' }} className="click-active">
         <Image
           src="/logo.png"
           alt="Being Basheer"
@@ -180,7 +182,7 @@ export default function EditorPage() {
           priority
           loading="eager"
         />
-      </div>
+      </Link>
 
       {/* Grid Layout matching screenshot */}
       <div style={{

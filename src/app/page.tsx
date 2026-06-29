@@ -1,15 +1,9 @@
 'use client'
 
 import Image from 'next/image'
-import { useTransitionRouter as useRouter } from 'next-view-transitions'
+import { Link } from 'next-view-transitions'
 
 export default function Home() {
-  const router = useRouter()
-
-  const handleContinue = () => {
-    router.push('/home')
-  }
-
   return (
     <main style={{ width: '100vw', height: '100vh', overflow: 'hidden', position: 'relative', fontFamily: 'Inter, sans-serif', background: '#000' }}>
 
@@ -48,8 +42,8 @@ export default function Home() {
         </div>
 
         {/* Continue button */}
-        <button
-          onClick={handleContinue}
+        <Link
+          href="/home"
           className="click-active liquid-glass-button-transparent"
           style={{
             position: 'absolute', bottom: '23%', right: '13%',
@@ -57,10 +51,13 @@ export default function Home() {
             padding: '10px 44px', fontSize: 13,
             fontFamily: 'var(--font-griffiths), Georgia, serif',
             letterSpacing: '0.08em', cursor: 'pointer',
+            textAlign: 'center',
+            display: 'inline-block',
+            textDecoration: 'none',
           }}
         >
           continue
-        </button>
+        </Link>
       </div>
     </main>
   )

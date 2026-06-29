@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
-import { useTransitionRouter as useRouter } from 'next-view-transitions'
+import { useTransitionRouter as useRouter, Link } from 'next-view-transitions'
 import { createClient } from '@/lib/supabase'
 import AuthModal from '@/components/auth_modal'
 
@@ -36,6 +36,9 @@ export default function ResultsPage() {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setPoems(JSON.parse(p))
     setMeta(JSON.parse(m))
+    router.prefetch('/home')
+    router.prefetch('/editor')
+    router.prefetch('/wall')
   }, [router])
 
   async function savePoem(poemText: string, isPublic: boolean, index: number) {
@@ -103,20 +106,22 @@ export default function ResultsPage() {
         style={{ objectFit: 'cover', objectPosition: 'center', zIndex: 0, filter: 'brightness(0.35)', viewTransitionName: 'bg' }} priority />
 
       {/* Logo */}
-      <div style={{ position: 'absolute', top: 24, left: 32, zIndex: 10, cursor: 'pointer' }} onClick={() => router.push('/home')} className="click-active">
+      <Link href="/home" style={{ position: 'absolute', top: 24, left: 32, zIndex: 10, cursor: 'pointer', display: 'block' }} className="click-active">
         <Image src="/logo.png" alt="Being Basheer" width={100} height={40} style={{ objectFit: 'contain', viewTransitionName: 'logo' }} priority loading="eager" />
-      </div>
+      </Link>
 
       {/* Back */}
-      <button onClick={() => router.push('/editor')}
+      <Link href="/editor"
         className="click-active liquid-glass-button-transparent"
         style={{
           position: 'absolute', top: 28, right: 32, zIndex: 10,
           borderRadius: 999,
           padding: '8px 20px', fontSize: 13, cursor: 'pointer',
+          textDecoration: 'none',
+          textAlign: 'center',
         }}>
         ← write again
-      </button>
+      </Link>
 
       {/* Content */}
       <div style={{ position: 'relative', zIndex: 10, padding: '100px 40px 80px', maxWidth: 1200, margin: '0 auto' }}>
